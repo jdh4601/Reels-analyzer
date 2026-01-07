@@ -21,7 +21,7 @@ Your competitor's viral reel → AI Analysis → Your winning script
 ```bash
 # Install
 npm install
-cp .env.example .env  # Add your API keys
+# Create .env file with your API keys (see Configuration section)
 
 # Analyze a viral reel
 npx ts-node src/cli.ts analyze "https://www.instagram.com/reel/ABC123"
@@ -42,9 +42,7 @@ npx ts-node src/cli.ts generate "productivity tips for developers" --duration 30
 
 ## Configuration
 
-```bash
-cp .env.example .env
-```
+Create a `.env` file in the project root:
 
 ```env
 ANTHROPIC_API_KEY=sk-ant-...      # Required: Claude for analysis
@@ -251,8 +249,9 @@ brew install ffmpeg
 
 **"Missing required environment variables"**
 ```bash
-cp .env.example .env
-# Edit .env with your API keys
+# Create .env file with required keys:
+# ANTHROPIC_API_KEY=sk-ant-...
+# OPENAI_API_KEY=sk-...
 ```
 
 **Rate limits / API errors**
