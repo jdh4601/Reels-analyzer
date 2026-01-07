@@ -1,0 +1,40 @@
+{
+  "title": "3 Git Commands That Will Save Your Life",
+  "hook": {
+    "type": "question",
+    "text": "Ever accidentally deleted your entire codebase? These 3 Git commands will save your life.",
+    "duration": 4
+  },
+  "body": {
+    "sections": [
+      {
+        "text": "Number one: git reflog. This shows you EVERYTHING you've done, even commits you thought were lost forever. Just run git reflog and find your lost commit.",
+        "duration": 8,
+        "visualNotes": "Screen recording of terminal showing git reflog output"
+      },
+      {
+        "text": "Number two: git stash. About to switch branches but don't want to commit? Git stash saves your changes temporarily. Git stash pop brings them back.",
+        "duration": 8,
+        "visualNotes": "Split screen showing before/after git stash"
+      },
+      {
+        "text": "Number three: git cherry-pick. Need just ONE commit from another branch? Cherry-pick it. Just grab the commit hash and run git cherry-pick.",
+        "duration": 8,
+        "visualNotes": "Animation showing commit moving between branches"
+      }
+    ]
+  },
+  "cta": {
+    "type": "follow",
+    "text": "Follow for more dev tips that actually matter!",
+    "duration": 2
+  },
+  "totalDuration": 30,
+  "notes": [
+    "Maintain high energy throughout",
+    "Use captions for all commands",
+    "Add trending audio in background (low volume)",
+    "Include emoji overlays for engagement"
+  ],
+  "generatedAt": "2026-01-07T14:30:00.000Z"
+}

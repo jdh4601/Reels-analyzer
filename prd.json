@@ -1,0 +1,176 @@
+{
+  "project": "Reels Analyzer & Creator",
+  "description": "최신 릴스 트렌드를 분석하고, 스크립트/스토리보드를 자동 생성하는 CLI 도구",
+  "tech_stack": {
+    "language": "TypeScript",
+    "runtime": "Node.js",
+    "tools": ["yt-dlp", "whisper", "ffmpeg"],
+    "ai": "Claude API"
+  },
+  "features": [
+    {
+      "id": 1,
+      "title": "프로젝트 초기 설정",
+      "description": "TypeScript 프로젝트 구조, 의존성, 기본 설정",
+      "acceptance_criteria": [
+        "package.json 존재 (name: reels-analyzer)",
+        "tsconfig.json 존재",
+        "src/, tests/, output/ 폴더 구조",
+        "npm install 성공",
+        "npx tsc --noEmit 패스"
+      ],
+      "priority": 1,
+      "passes": true
+    },
+    {
+      "id": 2,
+      "title": "설정 및 타입 정의",
+      "description": "핵심 타입, 인터페이스, 환경변수 설정",
+      "acceptance_criteria": [
+        "src/types/index.ts - Reel, Analysis, Script 타입 정의",
+        "src/config.ts - 환경변수 로드 (ANTHROPIC_API_KEY 등)",
+        ".env.example 파일 존재",
+        "타입 체크 패스"
+      ],
+      "priority": 2,
+      "passes": true
+    },
+    {
+      "id": 3,
+      "title": "릴스 다운로더 모듈",
+      "description": "Instagram/TikTok/YouTube Shorts URL에서 영상 다운로드",
+      "acceptance_criteria": [
+        "src/downloader/index.ts 존재",
+        "yt-dlp 래퍼 함수 구현",
+        "URL 유효성 검사 (Instagram, TikTok, YouTube)",
+        "output/downloads/ 에 저장",
+        "테스트: 샘플 URL 다운로드 성공"
+      ],
+      "priority": 3,
+      "passes": true
+    },
+    {
+      "id": 4,
+      "title": "오디오 추출 및 트랜스크립션",
+      "description": "영상에서 오디오 추출 후 텍스트 변환",
+      "acceptance_criteria": [
+        "src/transcriber/index.ts 존재",
+        "ffmpeg로 오디오 추출 (mp3)",
+        "Whisper API 또는 로컬 whisper 연동",
+        "타임스탬프 포함 트랜스크립트 반환",
+        "테스트: 샘플 영상 트랜스크립션 성공"
+      ],
+      "priority": 4,
+      "passes": true
+    },
+    {
+      "id": 5,
+      "title": "릴스 구조 분석기",
+      "description": "Claude API로 릴스 구조 분석 (훅, 본문, CTA)",
+      "acceptance_criteria": [
+        "src/analyzer/structure.ts 존재",
+        "분석 결과: hook_time, sections[], cta_type",
+        "Claude API 호출 구현",
+        "JSON 형식 출력",
+        "테스트: 트랜스크립트 → 구조 분석 성공"
+      ],
+      "priority": 5,
+      "passes": true
+    },
+    {
+      "id": 6,
+      "title": "트렌드 패턴 분석기",
+      "description": "여러 릴스를 분석해 공통 패턴 추출",
+      "acceptance_criteria": [
+        "src/analyzer/trends.ts 존재",
+        "입력: 분석된 릴스 배열",
+        "출력: 공통 훅 패턴, 인기 포맷, 평균 길이",
+        "테스트: 3개 이상 릴스 패턴 분석 성공"
+      ],
+      "priority": 6,
+      "passes": true
+    },
+    {
+      "id": 7,
+      "title": "스크립트 생성기",
+      "description": "분석 결과 기반 새 릴스 스크립트 생성",
+      "acceptance_criteria": [
+        "src/generator/script.ts 존재",
+        "입력: 주제, 트렌드 분석 결과, 타겟 길이",
+        "출력: 훅, 본문, CTA 포함 스크립트",
+        "Claude API 활용",
+        "Markdown 형식 저장"
+      ],
+      "priority": 7,
+      "passes": true
+    },
+    {
+      "id": 8,
+      "title": "스토리보드 생성기",
+      "description": "스크립트 기반 시각적 스토리보드 생성",
+      "acceptance_criteria": [
+        "src/generator/storyboard.ts 존재",
+        "컷별 설명: 시간, 샷타입, 텍스트오버레이, 전환효과",
+        "JSON + Markdown 이중 출력",
+        "테스트: 스크립트 → 스토리보드 변환 성공"
+      ],
+      "priority": 8,
+      "passes": true
+    },
+    {
+      "id": 9,
+      "title": "CLI 인터페이스",
+      "description": "사용자 친화적 CLI 명령어 구현",
+      "acceptance_criteria": [
+        "src/cli.ts 존재",
+        "명령어: analyze <url>, trends <urls...>, generate <topic>",
+        "--output 옵션으로 출력 경로 지정",
+        "--format 옵션 (json, markdown)",
+        "npx reels-analyzer --help 동작"
+      ],
+      "priority": 9,
+      "passes": true
+    },
+    {
+      "id": 10,
+      "title": "배치 분석 기능",
+      "description": "여러 URL을 파일로 받아 일괄 분석",
+      "acceptance_criteria": [
+        "src/batch.ts 존재",
+        "입력: urls.txt (줄바꿈으로 구분된 URL 목록)",
+        "병렬 처리 (concurrency 옵션)",
+        "진행률 표시",
+        "결과를 output/batch-results/ 에 저장"
+      ],
+      "priority": 10,
+      "passes": true
+    },
+    {
+      "id": 11,
+      "title": "리포트 생성기",
+      "description": "분석 결과를 보기 좋은 리포트로 출력",
+      "acceptance_criteria": [
+        "src/reporter/index.ts 존재",
+        "HTML 리포트 생성 (차트 포함)",
+        "Markdown 요약 리포트",
+        "output/reports/ 에 저장",
+        "테스트: 배치 결과 → 리포트 생성 성공"
+      ],
+      "priority": 11,
+      "passes": true
+    },
+    {
+      "id": 12,
+      "title": "통합 테스트 및 문서화",
+      "description": "E2E 테스트, README, 사용 예시",
+      "acceptance_criteria": [
+        "tests/e2e/ 에 통합 테스트 존재",
+        "README.md 완성 (설치, 사용법, 예시)",
+        "examples/ 폴더에 샘플 출력물",
+        "npm test 전체 패스"
+      ],
+      "priority": 12,
+      "passes": true
+    }
+  ]
+}

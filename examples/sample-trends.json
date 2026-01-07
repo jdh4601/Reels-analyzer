@@ -1,0 +1,78 @@
+{
+  "analyzedCount": 10,
+  "patterns": {
+    "hookPatterns": [
+      {
+        "type": "question",
+        "frequency": 4,
+        "examples": [
+          "Did you know this secret?",
+          "Want to 10x your productivity?",
+          "Why do 90% of developers fail?"
+        ]
+      },
+      {
+        "type": "list",
+        "frequency": 3,
+        "examples": [
+          "5 things you need to know",
+          "3 mistakes killing your code",
+          "Top 7 tools for developers"
+        ]
+      },
+      {
+        "type": "shock",
+        "frequency": 2,
+        "examples": [
+          "This changed everything!",
+          "I can't believe I didn't know this"
+        ]
+      },
+      {
+        "type": "story",
+        "frequency": 1,
+        "examples": [
+          "Last week I discovered something..."
+        ]
+      }
+    ],
+    "popularFormats": [
+      {
+        "name": "Listicle/Tips",
+        "description": "Educational content structured as a list",
+        "frequency": 5
+      },
+      {
+        "name": "Q&A / Engagement",
+        "description": "Videos starting with a question to drive comments",
+        "frequency": 3
+      },
+      {
+        "name": "Short & Snappy",
+        "description": "Under 15s videos focusing on quick impact",
+        "frequency": 2
+      }
+    ],
+    "averageDuration": 28,
+    "commonCTAs": ["follow", "save", "share"],
+    "editingTrends": {
+      "averageCutFrequency": "high",
+      "textOverlayUsage": 80,
+      "popularTransitions": ["cut", "zoom", "fade", "swipe"]
+    }
+  },
+  "insights": [
+    "The most effective hook type is 'question', appearing in 40% of videos.",
+    "Users are mostly asked to 'follow' at the end.",
+    "Text overlays are dominant (80%), suggesting sound-off optimization is key.",
+    "Listicle format shows highest engagement potential."
+  ],
+  "recommendations": [
+    "Start your video with a 'question' hook like: \"Did you know this secret?\"",
+    "Aim for a duration around 28 seconds to match current trends.",
+    "Use fast-paced editing with frequent cuts to maintain retention.",
+    "Always include text overlays for sound-off viewers.",
+    "End with a clear 'follow' CTA for maximum growth."
+  ],
+  "analyzedAt": "2026-01-07T12:00:00.000Z"
+}

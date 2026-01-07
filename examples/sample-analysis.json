@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "url": "https://www.instagram.com/reel/C1234567890",
+    "platform": "instagram",
+    "videoId": "C1234567890",
+    "title": "5 Coding Tips You Need to Know",
+    "author": "@devinfluencer",
+    "duration": 32,
+    "downloadedAt": "2026-01-07T10:30:00.000Z",
+    "filePath": "./output/downloads/C1234567890.mp4"
+  },
+  "transcript": {
+    "segments": [
+      { "start": 0, "end": 3, "text": "Stop making these coding mistakes!" },
+      { "start": 3, "end": 8, "text": "Number one: Always use meaningful variable names." },
+      { "start": 8, "end": 14, "text": "Number two: Write tests before you ship." },
+      { "start": 14, "end": 20, "text": "Number three: Keep your functions small and focused." },
+      { "start": 20, "end": 26, "text": "Number four: Document your code as you write it." },
+      { "start": 26, "end": 30, "text": "Number five: Review your own code before submitting." },
+      { "start": 30, "end": 32, "text": "Follow for more coding tips!" }
+    ],
+    "fullText": "Stop making these coding mistakes! Number one: Always use meaningful variable names. Number two: Write tests before you ship. Number three: Keep your functions small and focused. Number four: Document your code as you write it. Number five: Review your own code before submitting. Follow for more coding tips!",
+    "language": "en",
+    "duration": 32
+  },
+  "analysis": {
+    "hookTime": 3,
+    "hookType": "list",
+    "hookText": "Stop making these coding mistakes!",
+    "sections": [
+      {
+        "name": "hook",
+        "startTime": 0,
+        "endTime": 3,
+        "content": "Stop making these coding mistakes!",
+        "purpose": "Create urgency and curiosity"
+      },
+      {
+        "name": "body",
+        "startTime": 3,
+        "endTime": 30,
+        "content": "5 coding tips delivered in listicle format",
+        "purpose": "Deliver value through structured tips"
+      },
+      {
+        "name": "cta",
+        "startTime": 30,
+        "endTime": 32,
+        "content": "Follow for more coding tips!",
+        "purpose": "Drive follower growth"
+      }
+    ],
+    "ctaType": "follow",
+    "ctaText": "Follow for more coding tips!",
+    "editingStyle": {
+      "cutFrequency": "high",
+      "textOverlay": true,
+      "transitionEffects": ["zoom", "cut", "fade"]
+    },
+    "audioStyle": {
+      "hasVoiceover": true,
+      "hasTrendingSound": false,
+      "subtitleDependent": true
+    },
+    "totalDuration": 32,
+    "engagementHooks": [
+      "Pattern interrupt with negative framing",
+      "Numbered list structure",
+      "Quick-fire delivery"
+    ],
+    "summary": "Educational listicle content using pattern interrupt hook and numbered tips format. High engagement potential due to structured, scannable content with text overlays."
+  }
+}

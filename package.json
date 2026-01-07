@@ -1,0 +1,46 @@
+{
+  "name": "reels-analyzer",
+  "version": "1.0.0",
+  "description": "최신 릴스 트렌드를 분석하고, 스크립트/스토리보드를 자동 생성하는 CLI 도구",
+  "main": "dist/index.js",
+  "bin": {
+    "reels-analyzer": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/cli.js",
+    "dev": "ts-node src/cli.ts",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src/**/*.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "reels",
+    "instagram",
+    "tiktok",
+    "youtube-shorts",
+    "content-analysis",
+    "ai",
+    "claude"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.0",
+    "commander": "^12.0.0",
+    "dotenv": "^16.4.1",
+    "openai": "^6.15.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

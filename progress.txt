@@ -1,0 +1,210 @@
+# Ralph Progress Log
+
+## 초기 상태
+- 총 태스크: 12개
+- 완료: 2개
+
+---
+
+## Iteration 1 - 20260106
+### 완료: Feature 1 - 프로젝트 초기 설정
+### 구현 내용
+- package.json: reels-analyzer 프로젝트 설정
+- tsconfig.json: TypeScript 설정
+- src/, tests/, output/ 폴더 구조 생성
+- npm install 성공
+- npx tsc --noEmit 패스
+
+---
+
+## Iteration 2 - 20260106
+### 완료: Feature 2 - 설정 및 타입 정의
+### 구현 내용
+- src/types/index.ts: Reel, Analysis, Script 타입 정의
+- src/config.ts: 환경변수 로드 (ANTHROPIC_API_KEY 등)
+- .env.example 파일 생성
+- 타입 체크 패스
+- npm test: 14개 테스트 통과
+
+### 다음 태스크 힌트
+- Feature 3: 릴스 다운로더 모듈 구현
+- yt-dlp 래퍼 함수 필요
+- URL 유효성 검사 (Instagram, TikTok, YouTube)
+
+---
+
+## Iteration 3 - 20260106
+### 완료: Feature 3 - 릴스 다운로더 모듈
+### 구현 내용
+- src/downloader/index.ts: `yt-dlp` wrapper 및 `validateUrl` 구현
+- tests/downloader.test.ts: 다운로더 모듈 유닛 테스트 (Mock 사용)
+- URL Validation (Instagram, TikTok, YouTube/Shorts/youtu.be) 적용
+- 다운로드 폴더 자동 생성 및 메타데이터 파싱 로직 추가
+
+### 다음 태스크 힌트
+- Feature 4: 오디오 추출 및 트랜스크립션
+- ffmpeg 활용하여 다운로드된 비디오에서 오디오 추출 (mp3)
+
+## Iteration 4 - 20260106
+### 완료: Feature 4 - 오디오 추출 및 트랜스크립션
+### 구현 내용
+- src/transcriber/index.ts: `ffmpeg` 기반 오디오 추출 및 `OpenAI Whisper API` 연동 구현
+- src/config.ts: `OPENAI_API_KEY` 환경변수 추가 (Whisper 용)
+- tests/transcriber.test.ts: 유닛 테스트 구현 (Mock 활용)
+- 패키지 추가: `openai`
+
+### 이슈 및 해결
+- `ffmpeg` 미설치 환경 대응: `extractAudio` 호출 시 에러가 발생하도록 구현. (실행 시 ffmpeg 설치 필요)
+- Test의 `mockFsExists` 로직 수정하여 `spawn` 호출 검증 완료
+
+### 다음 태스크 힌트
+- Feature 5: 릴스 구조 분석기
+- Claude API를 사용하여 트랜스크립트 분석
+- Hook, Body, CTA 등 구조화된 데이터 추출
+
+
+You've hit your limit · resets 4pm (Asia/Seoul)
+
+## Iteration 4 - 20260106 (Gemini)
+### 완료: Feature 4 - 오디오 추출 및 트랜스크립션
+### 구현 내용
+- src/config.ts: OPENAI_API_KEY 설정 추가
+- src/transcriber/index.ts: ffmpeg 오디오 추출 및 OpenAI Whisper API (curl) 트랜스크립션 구현
+- tests/transcriber.test.ts: 유닛 테스트 구현 (ffmpeg, curl 모킹)
+- npm test: tests/transcriber.test.ts 통과
+
+
+### 다음 태스크 힌트
+- Feature 5: 릴스 구조 분석기
+- 트랜스크립트 → 구조 분석 (Hook, Sections, CTA)
+- Claude API 활용
+
+## Iteration 5 - 20260106 (Gemini)
+### 완료: Feature 5 - 릴스 구조 분석기
+### 구현 내용
+- src/analyzer/structure.ts: Claude API (Haiku 모델) 활용 구조 분석 로직 구현
+- src/analyzer/index.ts: Barrel file 생성
+- tests/analyzer.test.ts: 유닛 테스트 구현 (Mock 활용)
+- npm test: tests/analyzer.test.ts 통과
+
+
+### 다음 태스크 힌트
+- Feature 6: 트렌드 패턴 분석기
+- 분석된 여러 릴스의 데이터를 종합하여 공통 패턴 도출
+- Hook Type 빈도, 평균 길이, 인기 포맷 등 분석 로직 구현
+
+## Iteration 5 - 20260106 (Gemini)
+### 완료: Feature 6 - 트렌드 패턴 분석기
+### 구현 내용
+- src/analyzer/trends.ts: 다수의 리포트 분석 및 통계 로직 구현
+- Rule-based Insight 및 Recommendation 생성
+- tests/trends.test.ts: 통계 로직 유닛 테스트 작성 및 통과
+- npm test: tests/trends.test.ts 통과
+
+
+### 다음 태스크 힌트
+- Feature 7: 스크립트 생성기
+- 트렌드 분석 결과 + 사용자 주제 기반 새 릴스 스크립트 작성作成
+- Claude API 활용 (Creative Writing)
+
+## Iteration 6 - 20260106 (Gemini)
+### 완료: Feature 7 - 스크립트 생성기
+### 구현 내용
+- src/generator/script.ts: Claude API (Haiku 모델) 활용 스크립트 생성 로직 구현
+- 트렌드 분석 결과(TrendAnalysis)를 프롬프트 컨텍스트로 주입하여 반영
+- tests/generator.test.ts: 유닛 테스트 구현 및 통과
+
+
+### 다음 태스크 힌트
+- Feature 8: 스토리보드 생성기
+- 완성된 스크립트를 기반으로 시각적 가이드(Shot type, Transition 등) 생성
+
+## Iteration 7 - 20260106 (Gemini)
+### 완료: Feature 8 - 스토리보드 생성기
+### 구현 내용
+- src/generator/storyboard.ts: Claude API를 활용하여 스크립트 -> 샷 리스트 변환 로직 구현
+- 샷 타입 유효성 검사 및 자동 보정 로직 포함
+- tests/storyboard.test.ts: 유닛 테스트 구현 및 통과
+
+
+### 다음 태스크 힌트
+- Feature 9: CLI 인터페이스
+- 사용자가 터미널에서 명령어로 위 기능들을 사용할 수 있도록 연결
+- commander.js 활용
+
+## Iteration 8 - 20260106 (Gemini)
+### 완료: Feature 9 - CLI 인터페이스
+### 구현 내용
+- src/cli.ts: Commander.js 기반 CLI 구현
+- 명령어: `analyze`, `trends`, `generate`
+- --help 옵션 및 에러 처리 구현 완료
+
+
+### 다음 태스크 힌트
+- Feature 10: 배치 분석 기능
+- urls.txt 파일 입력을 통한 대량 분석 기능 추가
+
+## Iteration 9 - 20260106 (Gemini)
+### 완료: Feature 10 - 배치 분석 기능
+### 구현 내용
+- src/batch.ts: Promise.all을 활용한 동시성 제어(Worker Pool 패턴) 구현
+- 파일(urls.txt) 입력 처리 및 개별 실패 시 안전한 에러 핸들링 추가
+- CLI의 `batch` 커맨드 구현
+- tests/batch.test.ts: 유닛 테스트 구현 (Mocking FS/Network) 및 통과
+
+### 다음 태스크 힌트
+- Feature 11: 리포트 생성기
+- 분석된 결과를 HTML/Markdown 리포트로 시각화
+
+## Iteration 10 - 20260107 (Claude Opus 4.5)
+### 완료: Feature 11 - 리포트 생성기
+### 구현 내용
+- src/reporter/index.ts: 배치 분석 결과 → 리포트 변환 로직 구현
+  - `generateReport()`: Markdown + HTML 동시 생성
+  - `generateMarkdownReport()`: reports/latest.md 생성 (테이블, 인사이트, 개별 분석 포함)
+  - `generateHtmlReport()`: reports/dashboard.html 생성 (Chart.js CDN 활용 대시보드)
+  - `loadAnalysesFromDirectory()`: batch-results 폴더에서 JSON 파일 로드
+  - `loadBatchResult()`: 배치 실행 요약 정보 로드
+- Chart.js 4.4.1 CDN 활용, 4개 차트 (Hook Distribution, Duration, CTA, Editing Style)
+- HTML 다크모드 대시보드 UI 구현 (glassmorphism 스타일)
+- tests/reporter.test.ts: 29개 유닛 테스트 구현 및 통과
+- src/cli.ts: `report` 커맨드 추가 (`--no-html` 옵션 지원)
+- npm test: 69개 테스트 전체 통과
+
+### 다음 태스크 힌트
+- Feature 12: 통합 테스트 및 문서화
+- E2E 테스트 작성, README.md 완성, examples/ 폴더 샘플 출력물
+
+## Iteration 11 - 20260107 (Claude Opus 4.5)
+### 완료: Feature 12 - 통합 테스트 및 문서화
+### 구현 내용
+- tests/e2e/pipeline.test.ts: 전체 파이프라인 E2E 테스트 구현
+  - Analysis → Trends → Script → Storyboard → Report 전체 플로우 검증
+  - 데이터 일관성, 에러 핸들링, 빈 데이터 처리 테스트
+  - 12개 테스트 케이스 구현
+- README.md: 완성된 문서화
+  - Features, Prerequisites, Installation 가이드
+  - 모든 CLI 명령어 사용법 및 옵션 설명
+  - Output 구조 및 Analysis JSON 포맷 설명
+  - 프로젝트 구조 설명
+- examples/: 샘플 출력물 4개 생성
+  - sample-analysis.json: 개별 비디오 분석 결과 예시
+  - sample-trends.json: 트렌드 분석 결과 예시
+  - sample-script.json: 생성된 스크립트 예시
+  - sample-report.md: Markdown 리포트 예시
+- npm test: 12 suites, 81개 테스트 전체 통과
+
+### 프로젝트 완료
+모든 12개 Feature 구현 완료!
+- Feature 1-4: 기초 설정, 다운로더, 트랜스크립션
+- Feature 5-6: 구조 분석, 트렌드 분석
+- Feature 7-8: 스크립트 생성, 스토리보드 생성
+- Feature 9-10: CLI, 배치 처리
+- Feature 11-12: 리포트 생성, 문서화
+
+
+
+
+
+
+
